@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Virtual environments
+.env/
+.venv/
+venv/
+
+# Confidential / Local files
+*.env
+*.key
+*.pem
+
+# IDE / Editor
+.idea/
+.vscode/
+
+# Logs
+*.log
+logs/
+
+# Data and models (if not versioning in git)
+data/
+datasets/
+models/
+checkpoints/
+*.ckpt
+*.h5
+*.joblib
+*.pkl
+
+# System files
+.DS_Store
+Thumbs.db
+
+# macOS resource forks and similar
+._*
+*.ipynb

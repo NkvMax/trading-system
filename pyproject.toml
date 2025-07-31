@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "trading-system-root"
+version = "0.1.0"
+description = "CLI orchestrator for the whole pipeline"
+authors = ["Maxim <nkvmaxim@gmail.com>"]
+license = "MIT"
+
+packages = [
+  { include = "tsroot", from = "src" }
+]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.11"
+typer = "^0.16.0"
+rich  = "^13.7"
+yfinance = "^0.2.65"
+
+[tool.poetry.scripts]
+tsroot = "tsroot.cli:app"
+
+[build-system]
+requires = ["poetry-core>=1.8"]
+build-backend = "poetry.core.masonry.api"
