@@ -1,0 +1,94 @@
+feature_engineering:
+  # technical indicators (moving averages, oscillators, volatility)
+  indicators:
+    - name: sma
+      window: 3
+    - name: sma
+      window: 7
+    - name: sma
+      window: 21
+    - name: sma
+      window: 50
+    - name: sma
+      window: 100
+    - name: sma
+      window: 200
+    - name: ema
+      window: 7
+    - name: ema
+      window: 21
+    - name: ema
+      window: 50
+    - name: ema
+      window: 100
+    - name: bollinger
+      window: 20
+    - name: donchian
+      window: 20
+    - name: macd
+      fast: 12
+      slow: 26
+      signal: 9
+    - name: rsi
+      window: 6
+    - name: rsi
+      window: 14
+    - name: rsi
+      window: 21
+    - name: williams_r
+      window: 14
+    - name: stoch
+      window: 14
+      smooth_k: 3
+      smooth_d: 3
+    - name: cci
+      window: 20
+    - name: adx
+      window: 14
+    - name: atr
+      window: 14
+    - name: atr
+      window: 30
+    - name: roc
+      window: 14
+    - name: momentum
+      window: 14
+
+  # generate lag features for key columns
+  lags:
+    - column: Close
+      periods: [ 1, 3, 7, 14, 30 ]
+    - column: Volume
+      periods: [ 1, 3, 7 ]
+    - column: RSI_14
+      periods: [ 1, 3 ]
+
+  # rolling-window statistics
+  rolling:
+    - column: Volume
+      windows: [ 7 ]
+      stats: [ "mean" ]
+    - column: Close
+      windows: [ 14 ]
+      stats: [ "std" ]
+
+market_phases:
+  # base window sizes and sample count
+  base_window: 30
+  step_window: 7
+  max_window: 120
+  target_samples: 250
+
+  # default thresholds for all phases
+  slope_days: 7
+  slope_strong: 0.08
+  slope_weak: 0.02
+  vol_window: 30
+  vol_norm_window: 90
+  vol_high: 1.35
+
+  # “soft” overrides for phase 3 (from phase3.yaml)
+  phase3_overrides:
+    slope_strong: 0.10
+    slope_weak: 0.02
+    vol_high: 1.20
